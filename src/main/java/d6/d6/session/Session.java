@@ -1,4 +1,6 @@
-package d6.d6;
+package d6.d6.session;
+
+import d6.d6.user.User;
 
 public class Session {
     public String[] PlayerList;

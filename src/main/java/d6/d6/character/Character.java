@@ -1,4 +1,6 @@
-package d6.d6;
+package d6.d6.character;
+
+import d6.d6.world.Room;
 
 public abstract class Character {
     public int Health;

@@ -1,4 +1,4 @@
-package d6.d6;
+package d6.d6.world;
 
 public class Room {
     public String[] PlayersInRoom;

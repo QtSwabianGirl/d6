@@ -1,4 +1,4 @@
-package d6.d6;
+package d6.d6.user;
 
 public class Player extends User {
     public String PlayerName = super.UserName;

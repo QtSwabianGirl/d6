@@ -1,4 +1,4 @@
-package d6.d6;
+package d6.d6.user;
 
 public class DM extends User {
     public String DMName = super.UserName;

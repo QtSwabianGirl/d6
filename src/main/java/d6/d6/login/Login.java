@@ -1,4 +1,4 @@
-package d6.d6;
+package d6.d6.login;
 
 public class Login {
     public String ID;
