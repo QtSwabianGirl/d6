@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>d6 - Prototyp</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+    <script language="javascript" type="text/javascript" src="js/vuedev.js"></script>
+    <!--<script language="javascript" type="text/javascript" src="js/main.js"></script> -->
+</head>
+<body>
+    <header>
+        <h1>d6</h1>
+    </header>
+    <main>
+        <div id ="app">
+            <div v-if="error != ''" class="errorDiv">
+                <div class="errorDivTitle">
+                    Fehler
+                </div>
+                <div class="errorDivContent">
+                    <p class="loginErrorP">{{ error }}</p>
+                </div>
+            </div>
+            <div class="loginDiv" id="loginDiv" v-if="page == 'login'">
+                <div class="mainMargin">
+                    <div class="mainText">
+                        Herzlich Willkommen bei unserem MUD SWE-Projekt.<br>
+                        Um weiteres über das Projekt zu erfahren, nutze unsere Projektseite unter <a href="https://d6.ndsboy.de/">d6.ndsboy.de</a>. <br>
+                        Eine kurze Dokumentation zu dem Prototypen ist <a href="documentation.html">hier</a> zu finden.<br>
+                        Alles durchgelesen? Dann melde dich an. <br>
+                    </div>
+                </div>
+                
+                <div class="mainMargin">
+                    <div class="mainElementHeader">
+                        Anmelden
+                    </div>
+                    <div class="mainElementContent">
+                        <input v-model="username" placeholder="Benutzername">
+                        <input v-model="password" type="password" placeholder="Passwort">
+                        <button v-on:click="login" >Anmelden</button>
+                    </div>
+                </div>
+                <div class="mainMargin">
+                    <div class="mainElementHeader">
+                        Noch nicht registriert?
+                    </div>
+                    <div class="mainElementContent">
+                        Du willst auch dabei sein? Dann registriere dich gleich! <br><br>
+                        <button v-on:click="switchPage('register')">Registrieren</button>
+                    </div>
+                </div>
+                <div class="mainMargin mainMarginBottom">
+                    <div class="mainElementHeader">
+                        Passwort vergessen?
+                    </div>
+                    <div class="mainElementContent">
+                        Du hast dein Passwort vergessen? Kein Problem, wir helfen dir, wieder auf deinen Account zuzugreifen.<br><br>
+                        <button v-on:click="switchPage('forgotPassword')">Passwort zurücksetzen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mainDiv" v-else-if="page == 'register'">
+                <div class="mainMargin mainMarginBottom">
+                    <div class="mainElementHeader">
+                        Registrieren
+                    </div>
+                    <div class="mainElementContent">
+                        <input v-model="username" placeholder="Benutzername">
+                        <input v-model="password" type="password" placeholder="Passwort">
+                        <input v-model="mail" type="email" placeholder="E-Mail">
+                        <button v-on:click="register" >Registrieren</button>
+                    </div>
+                </div>                
+            </div>
+            <div class="mainDiv" v-else-if="page == 'forgotPassword'">
+                <div class="mainMargin mainMarginBottom">
+                    <div class="mainElementHeader">
+                        Passwort vergessen?
+                    </div>
+                    <div class="mainElementContent">
+                        <input v-model="mail" type="email" placeholder="E-Mail">
+                        <button v-on:click="forgotPassword">Neues Passwort anfordern</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mainDiv" v-else-if="page == 'sessionChoice'">
+                <div>
+                    <!--Hier kommt die Liste mit den aktiven Sessions rein, Formatierung kann ich erstellen, die muss aber ins javascript (zumindest später)-->
+                    <!--Deshalb erstmal ein kleiner Dummy, um einem Spiel beizutreten-->
+                    <div v-for="session in sessions" class="sessionListElement">
+                        <div class="sessionListElementGameNumber">
+                            {{ session.name }}
+                        </div>
+                        <div class="sessionListElementActivePlayers">
+                            Anzahl Spieler: {{ session.playerCount }}
+                        </div>
+                        <div v-on:click="joinGame(session)" class="standardButton">Spiel beitreten</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sessionListElement">
+                        <div class="sessionCreateText">
+                            Erstelle deine eigene Session
+                        </div>
+                        <div v-on:click="switchPage('createSession')" class="standardButton">Spiel konfigurieren</div>
+                    </div>
+                </div>
+            </div>
+            <div v-else-if="page == 'createSession'" class="createSessionDiv">
+                <div class="mainMargin mainMarginBottom">
+                    <div class="mainElementHeader">
+                        Erstelle deine eigene Session
+                    </div>
+                    <div class="mainElementContent mainMarginBottom">
+                        Hier kannst du deine eigene Welt erstellen.<br>
+                        Lass und mit einem Namen für die Session beginnen. Wähle am Besten einen aussagekräftigen Namen, dieser wird auf der Sessionübersicht angezeigt..<br>
+                        Wie soll die Session heißen?
+                        <input v-model="sessionName" placeholder="Sessionname">
+                    </div>
+                    <div class="mainElementHeader">
+                        Räume
+                    </div>
+                    <div class="mainElementContent mainElementContentRoomNew">
+                        <div class="createSessionRoomNew">
+                            <div class="createSessionRoomNewInputDiv">
+                                <input v-model="roomName" placeholder="Raumname">
+                            </div>
+                            <div class="createSessionRoomNewInputDiv">
+                                <input v-model="roomDescription" placeholder="Beschreibung">
+                            </div>
+                            <div class="createSessionRoomNewInputDiv">
+                                <input v-model="roomNPCs" placeholder="NPCs">
+                            </div>
+                            <div class="createSessionRoomNewInputDiv">
+                                <input v-model="roomExtras" placeholder="Extras">
+                            </div>
+                            <div v-on:click="createRoom" class="standardButton leftFloat">
+                                Raum erstellen
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div v-for="room in rooms" class="createSessionRoomElement">
+                            <div class="createSessionRoomElementHeader">
+                                {{ room.name }}
+                            </div>
+                            <div class="createSessionRoomElementContent">
+                                <div class="createSessionRoomElementContentE">
+                                    {{ room.description }}
+                                </div>
+                                <div class="createSessionRoomElementContentE">
+                                    {{ room.npcs }}
+                                </div>
+                                <div class="createSessionRoomElementContentE">
+                                    {{ room.extras }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainMargin mainMarginBottom">
+                    <div class="mainElementHeader">
+                        Rassen
+                    </div>
+                    <div class="mainElementContent">
+                        Kommt noch
+                    </div>
+                </div>
+                <div>
+                    <div class="sessionListElement">
+                        <div class="sessionCreateText">
+                            Alles erledigt?
+                        </div>
+                        <div v-on:click="createSession" class="standardButton">Session erstellen</div>
+                    </div>
+                </div>
+                <!--ist sehr rudimentär, aber da müssen wir erst noch besprechen, was da alles gemacht werden können soll-->
+            </div>
+            <div v-else-if="page == 'game'" class="mainDiv">
+                <div>
+                    <div>
+                        {{ sessionName }}
+                    </div>
+                    2 aktive Spieler, ...
+                </div>
+                <!-- Bemerkung: ich habe die Namen hier absichticht möglich kurz gehalten, weil wie diesen bestimmt sehr oft nutzen werden-->
+                <div>
+                    <div>
+                        <p v-for="player in players">
+                            {{ player }} ist dem Spiel beigetreten.
+                        </p>
+                        <p v-for="message in messageHistory">
+                            {{ message }}
+                        </p>
+                    </div>
+                    <div>
+                        <input v-model="message" v-on:submit="sendMessage" placeholder="Neue Nachricht/Befehl">
+                        <button v-on:click="sendMessage">Absenden</button>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                Error
+            </div>
+        </div>
+        <script language="javascript" type="text/javascript" src="js/main.js"></script>
+    </main>
+    <footer>
+        <a href="https://d6.ndsboy.de/index.html#Impressum">Impressum</a>
+    </footer>
+</body>
+</html>

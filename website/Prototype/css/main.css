@@ -1,0 +1,186 @@
+:root {
+    --headerheight: 100px;
+    --footerheight: 40px;
+  }
+
+header {
+    top: 0;
+    left: 0;
+    background-color: rgba(150, 150, 150, 1);
+    width: 100%;
+    margin: 0;
+    height: var(--headerheight, 100px);
+    position: fixed;
+    text-align: center;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    height: var(--footerheight, 40px);
+    width: 100%;
+    background-color: rgba(150, 150, 150, 1);
+    box-sizing: border-box;
+    position: fixed;
+}
+
+main {
+    margin-top: var(--headerheight, 100px);
+    margin-bottom: var(--footerheight, 40px);
+    padding: 25px;
+}
+
+h1 {
+    margin: auto;
+    margin-top: 25px;
+}
+
+.mainDiv {
+    /*padding: 50px;*/
+    background-color: rgb(170,170,170);
+    display: inline-block;
+    width: 50%;
+    margin-left: 25%; /*calc(25% - 50px);*/
+}
+
+.mainText {
+    padding: 10px;
+    background-color: rgb(130, 130, 130);
+}
+
+.mainMargin {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+}
+
+.mainMarginBottom {
+    margin-bottom: 20px;
+}
+
+.mainElementHeader {
+    background-color: rgb(110, 110, 110);
+    padding: 5px;
+    font-weight: bold;
+}
+
+.mainElementContent {
+    background-color: rgb(130, 130, 130);
+    padding: 10px;
+}
+
+.mainElementContentRoomNew {
+    height: 3em;
+}
+
+.errorDiv {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.errorDivTitle {
+    background-color: rgb(250, 0, 0);
+    padding: 5px;
+    font-weight: bold;
+}
+
+.errorDivContent {
+    background-color: rgb(200, 40, 20);
+    padding: 10px;
+}
+
+.sessionListElement {
+    float: left;
+    padding: 15px;
+    margin: 15px;
+    background-color: rgb(140, 140, 140);
+    width: calc(100% - 60px);
+}
+
+.sessionListElementGameNumber {
+    float: left;
+    margin: 15px;
+    width: calc(50% - 30px);
+}
+
+.sessionListElementActivePlayers {
+    float: left;
+    margin: 15px;
+    width: calc(30% - 30px);
+}
+
+.standardButton {
+    float: left;
+    padding: 15px;
+    width: calc(20% - 30px);
+    border: none;
+    background-color: rgb(110, 110, 110);
+    text-align: center;
+}
+
+.standardButton:hover {
+    background-color: rgb(120, 120, 120);
+}
+
+.standardButton:active {
+    background-color: rgb(170, 170, 170);
+}
+
+.sessionCreateText {
+    float: left;
+    margin: 15px;
+    width: calc(80% - 30px);
+}
+
+#loginDiv {
+    width: 50%;
+    margin-left: 25%; /*calc(25% - 50px);*/
+}
+
+.loginErrorP {
+    margin: 0;
+    padding: 0;
+}
+
+.createSessionRoomElement {
+    float: left;
+    width: calc(25% - 30px);
+    padding: 15px;
+}
+
+.createSessionRoomElementHeader {
+    padding: 5px;
+    width: calc(100% - 10px);
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(130, 130, 130);
+}
+
+.createSessionRoomElementContent {
+    width: 100%;
+    background-color: rgb(170, 170, 170);
+}
+
+.createSessionRoomElementContentE {
+    padding: 5px;
+    width: calc(100% - 10px);
+}
+
+.createSessionRoomNew {
+    float:right;
+    width: 100%;
+}
+
+.createSessionRoomNewInputDiv {
+    float: left;
+}
+
+.createSessionDiv {
+    margin-bottom: 100px;
+}
+
+.leftFloat {
+    float: left;
+}

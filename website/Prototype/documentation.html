@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>d6 - Prototyp Dokumentation</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+</head>
+<body>
+    <header>
+        <h1>d6 - Prototyp Dokumentation</h1>
+    </header>
+    <main>
+        <div class="mainDiv">
+            <div class="errorDiv">
+                <div class="errorDivTitle">
+                    Unvollständigkeitswarung
+                </div>
+                <div class="errorDivContent">
+                    Der Prototyp und diese Dokumentation sind noch im Aufbau, deshalb sind die Dokumente noch nicht vollständig.
+                </div>
+            </div>
+            <div class="mainMargin">
+                <div class="mainElementHeader">
+                    Allgemeines
+                </div>
+                <div class="mainElementContent">
+                    Diese Anwendung ist aufgeteilt in ein Frontend und ein Backend. 
+                    Durch diese Aufteilung wird eine Modularität geschaffen, die später eine größere Flexibilität ermöglicht. 
+                    Beispielsweise ist eine Einbindung eines alternativen Frontends (z.B. eine App oder ein Messaging-Bot) einfach umzusetzen.
+                    Dieser Prototyp behandelt größtenteils das Frontend des späteren Produkts, sowie den Verbindungsaufbau zwischen Front- und Backend.
+                </div>
+            </div>
+            <div class="mainMargin">
+                <div class="mainElementHeader">
+                    Frontend
+                </div>
+                <div class="mainElementContent">
+                    Die Umsetzung des Frontends erfolgt in HTML, CSS und Javascript.<br>
+                    Html und CSS wurden bis jetzt vollständig selbst entwickelt, auf Frameworks wurde verzichtet.<br>
+                    Die Umsetzung mit Javascript erfolgt mithilfe des Frameworks vue.
+                    <h4>Benutzerführung</h4>
+                    Zu Beginn muss sich der Benutzer registrieren. Dafür ist eine E-Mailadresse notwendig. Später soll der Benutzer eine E-Mail mit einem Bestätigungslink erhalten, im Prototyp wird noch keine Mail versendet.<br>
+                    Ein registrierter Benutzer kann sich anmelden. Danach wird er zu einem Menü geführt, wo er entweder als Spieler einem bereits bestehenden Spiel beitreten kann oder eine neue Session konfigurieren kann, in welcher er dann Dungeon Master ist.<br>
+                    Die Konfiguration kann im Prototypen noch nicht vollständig erfolgen. Anhand dem Beispiel Räume wird die weitere Konfiguration umgesetzt.
+                    Es ist ein Nutzer mit dem Benutzernamen "d6Prototyp" und dem Passwort "allesgrau" vorkonfiguriert. 
+                </div>
+            </div>
+            <div class="mainMargin">
+                <div class="mainElementHeader">
+                    Verbindung Frontend - Backend
+                </div>
+                <div class="mainElementContent">
+                    Die Kommunikation des Frontends mit dem Backend erfolgt über ReST.
+                </div>
+            </div>  
+            <div class="mainMargin mainMarginBottom">
+                <div class="mainElementHeader">
+                    Im Spiel
+                </div>
+                <div class="mainElementContent">
+                    Ist der Spieler angemeldet und hat ein Spiel betreten, findet die weitere Navigation und Kommunikation über den Chat statt.
+                    Um Chatnachrichten zu schreiben kann die Nachricht einfach in der dafür vorgesehene Zeile eingetippt werden.<br>
+                    Ein Befehl beginnt mit einem Schrägstrich (/).<br><br>
+                    Derzeit sind folgende Befehle vorhanden:<br>
+                    <br>
+                    <b>/help</b> Gibt eine Hilfe aus (wird noch erstellt) <br>
+                    <b>/check</b> Charakter/NPC untersuchen<br>
+                    <b>/description</b> Gibt Raumbeschreibung aus<br>
+                    <b>/role</b> >Würfel< z.B. /role d6 (geht auch mit <b>/r</b>)<br>
+                    <b>/status</b> Gibt eigenen Status aus<br>
+                    <b>/rooms</b> gibt alle Räume des Spieles an und in welchem sich der Spieler befindet<br>
+                    <b>/moveto</b> >Raumname< Bewegt den Spieler in den angegebenen Raum            <br>        
+                </div>
+            </div>              
+        </div>
+            
+    </main>
+    <footer>
+        <a href="https://d6.ndsboy.de/index.html#Impressum">Impressum</a>
+    </footer>
+</body>
+</html>
